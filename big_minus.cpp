@@ -49,7 +49,7 @@ void front_push_back(char buf[], int _length, int _d)
 
 void super_computer_operation(char A_array[], char B_array[], char result_array[], int _Max_String_Len, int& checked)
 {
-	//¾Ë°í¸®Áò ÀÛ¼º
+	//ì•Œê³ ë¦¬ì¦˜ ì‘ì„±
 	int carray = 0;
 	for (int i = _Max_String_Len - 1; i >= 0; i--)
 	{
@@ -82,37 +82,37 @@ bool Negative_decision(char* A_array, int A_String_Len ,char* B_array, int B_Str
 	int total_score = 0;
 	int A_score = 0;
 	int B_score = 0;
-	//1) B±æÀÌ°¡ ´õ Å«°¡?
+	//1) Bê¸¸ì´ê°€ ë” í°ê°€?
 	if (A_String_Len < B_String_Len)
 	{
 		return true;
 	}
-	//±æÀÌ°¡ °°´Ù¸é
+	//ê¸¸ì´ê°€ ê°™ë‹¤ë©´
 	else if(A_String_Len == B_String_Len)
 	{
-		//A¿Í BÁß Å« °ª ¸î°³ ÀÖ´ÂÁö È®ÀÎ
+		//Aì™€ Bì¤‘ í° ê°’ ëª‡ê°œ ìˆëŠ”ì§€ í™•ì¸
 		for (int i = 0; i < _Max_String_Len; i++)
 		{
-			//A°ªÀÌ Bº¸´Ù Å©´Ù¸é
+			//Aê°’ì´ Bë³´ë‹¤ í¬ë‹¤ë©´
 			if (A_array[i] > B_array[i])
 			{
-				//°¡»êÁ¡ Ãß°¡
+				//ê°€ì‚°ì  ì¶”ê°€
 				A_score += 1;
 			}
-			//°°´Ù¸é °¡»êÁ¡ ¾øÀ½
+			//ê°™ë‹¤ë©´ ê°€ì‚°ì  ì—†ìŒ
 			else if (A_array[i] == B_array[i])
 			{
 				continue;
 			}
-			//B°ªÀÌ A°ªº¸´Ù Å©´Ù¸é
+			//Bê°’ì´ Aê°’ë³´ë‹¤ í¬ë‹¤ë©´
 			else
 			{
 				B_score += 1;
 			}
 		}
 
-		//ÃÖÁ¾ÀûÀ¸·Î ´©°¡ ´õ Å«Áö È®ÀÎ
-		//B_score°¡ ´õ ¸¹´Ù´Â°Ç Å«°ªÀÌ ´õ ¸¹´Ù´Â ÀÇ¹ÌÀÌ¹Ç·Î À½¼öÀÌ´Ù.
+		//ìµœì¢…ì ìœ¼ë¡œ ëˆ„ê°€ ë” í°ì§€ í™•ì¸
+		//B_scoreê°€ ë” ë§ë‹¤ëŠ”ê±´ í°ê°’ì´ ë” ë§ë‹¤ëŠ” ì˜ë¯¸ì´ë¯€ë¡œ ìŒìˆ˜ì´ë‹¤.
 		if (B_score > A_score)
 		{
 			return true;
@@ -135,27 +135,27 @@ int main(void)
 	char A_array[1001] = { '\x00' };
 	char B_array[1001] = { '\x00' };
 
-	//step1 : ¹®ÀÚ¿­ 2°³ ÀÔ·Â ¹ŞÀ½
-	scanf_s("%s %s", A_array, 1001, B_array, 1001);
+	//step1 : ë¬¸ìì—´ 2ê°œ ì…ë ¥ ë°›ìŒ
+	scanf("%s %s", A_array, B_array);
 
-	//0ÀÌ µÇ´ÂÁö È®ÀÎ.
+	//0ì´ ë˜ëŠ”ì§€ í™•ì¸.
 	if (strcmp(A_array, B_array) == 0)
 	{
 		printf("0");
 		return 0;
 	}
-	//step2 : ¹®ÀÚ¿­ ±æÀÌ °¢°¢ 2°³ ±¸ÇÏ±â
+	//step2 : ë¬¸ìì—´ ê¸¸ì´ ê°ê° 2ê°œ êµ¬í•˜ê¸°
 	int A_string_len = mystrlen(A_array);
 	int B_string_len = mystrlen(B_array);
 	
-	//step2[0] : Å« °ª ±æÀÌ ÀúÀå
+	//step2[0] : í° ê°’ ê¸¸ì´ ì €ì¥
 	int Maximum_len = MMM_L(A_string_len, B_string_len);
 	int chcked = 0;
 
-	//step3 : ¹®ÀÚ¿­ -> Á¤¼ö·Î º¯È¯
+	//step3 : ë¬¸ìì—´ -> ì •ìˆ˜ë¡œ ë³€í™˜
 	Change_string_to_integer(A_array, B_array, A_string_len, B_string_len);
 
-	//step4 : ÀÚ¸´¼ö ¾È¸Â´Â ºÎºĞ 0À¸·Î Ã¤¿ì±â
+	//step4 : ìë¦¿ìˆ˜ ì•ˆë§ëŠ” ë¶€ë¶„ 0ìœ¼ë¡œ ì±„ìš°ê¸°
 	int d = (A_string_len - B_string_len);
 	if (d < 0)
 	{
@@ -179,19 +179,19 @@ int main(void)
 
 	}
 
-	//step4 : a < bÀÏ ‹š
+	//step4 : a < bì¼ Â‹Âš
 	if (A_string_len < B_string_len)
 	{
 		front_push_back(A_array, A_string_len, d);
 		super_computer_operation(B_array, A_array, cCcode, Maximum_len, chcked);
 	}
-	//step5 : a > bÀÏ ‹š
+	//step5 : a > bì¼ Â‹Âš
 	if (A_string_len > B_string_len)
 	{
 		front_push_back(B_array, B_string_len, d);
 		super_computer_operation(A_array, B_array, cCcode, Maximum_len, chcked);
 	}
-	//step6 : a == bÀÏ ‹š 
+	//step6 : a == bì¼ Â‹Âš 
 	int sum_A = 0;
 	int sum_B = 0;
 	for (int i = 0; i < Maximum_len; i++)
@@ -212,7 +212,7 @@ int main(void)
 	}
 	
 	int count = 0;
-	//¾Õ¿¡ 0Á¦°Å ÇÏ±â À§ÇØ, 0ÀÌ ¾Æ´Ñ ¼ö¸¦ ¸¸³¯‹š±îÁö °è¼Ó countÇÔ.
+	//ì•ì— 0ì œê±° í•˜ê¸° ìœ„í•´, 0ì´ ì•„ë‹Œ ìˆ˜ë¥¼ ë§Œë‚ Â‹Âšê¹Œì§€ ê³„ì† countí•¨.
 	for (int i = 0; i < Maximum_len; i++)
 	{
 		if (cCcode[i] != '\x00')
@@ -221,7 +221,7 @@ int main(void)
 		}
 		count++;
 	}
-	//step8 : À½¼öÆÇÁ¤
+	//step8 : ìŒìˆ˜íŒì •
 	if (Negative_decision(A_array, A_string_len, B_array, B_string_len, Maximum_len))
 	{
 		printf("-");
